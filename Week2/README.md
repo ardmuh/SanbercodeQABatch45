@@ -1,6 +1,6 @@
 # Tugas Pekanan 2 - Postman
 
-Ini merupakan dokumentasi dari API Testing menggunakan tool Postman. Pada dokumentasi ini menggunakan API dari KasirAja API v1.0.0
+Repository ini berisikan dokumentasi API Testing menggunakan tool Postman. Pada tugas ini menggunakan API dari KasirAja versi 1.0.0
 ```
 https://kasir-api.belajarqa.com
 ```
