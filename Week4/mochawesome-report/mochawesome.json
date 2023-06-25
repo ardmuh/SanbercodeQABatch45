@@ -1,0 +1,369 @@
+{
+  "stats": {
+    "suites": 5,
+    "tests": 10,
+    "passes": 10,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-25T08:41:12.578Z",
+    "end": "2023-06-25T08:41:20.843Z",
+    "duration": 8265,
+    "testsRegistered": 10,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c90f15a1-0948-48d0-9d3f-ffd51e54d865",
+      "title": "",
+      "fullFile": "E:\\Learning QA\\SanbercodeQABatch45\\Week4\\test\\spec\\categories\\FeatureCategories.spec.js",
+      "file": "\\test\\spec\\categories\\FeatureCategories.spec.js",
+      "beforeHooks": [
+        {
+          "title": "\"before all\" hook in \"{root}\"",
+          "fullTitle": "\"before all\" hook in \"{root}\"",
+          "timedOut": false,
+          "duration": 1227,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "try {\n    accessToken = await login();\n} catch (error) {\n    throw error;\n}",
+          "err": {},
+          "uuid": "5b5de3fb-515f-4060-98ee-2a395adb5476",
+          "parentUUID": "c90f15a1-0948-48d0-9d3f-ffd51e54d865",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "bd3bd99f-9eed-4e85-badf-304017884ead",
+          "title": "Categories Tests",
+          "fullFile": "E:\\Learning QA\\SanbercodeQABatch45\\Week4\\test\\spec\\categories\\FeatureCategories.spec.js",
+          "file": "\\test\\spec\\categories\\FeatureCategories.spec.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "69ec972b-4b74-48bd-812c-2d28d939a0a4",
+              "title": "Create a category with method POST  ",
+              "fullFile": "E:\\Learning QA\\SanbercodeQABatch45\\Week4\\test\\spec\\categories\\FeatureCategories.spec.js",
+              "file": "\\test\\spec\\categories\\FeatureCategories.spec.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Success added a new categories (Positive Scenario)",
+                  "fullTitle": "Categories Tests Create a category with method POST   Success added a new categories (Positive Scenario)",
+                  "timedOut": false,
+                  "duration": 711,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "try {\n  const data = {\n    name: 'Oleh - oleh',\n    description: 'Oleh - oleh khas Bukittinggi',\n  };\n  const response = await request(baseUrl)\n    .post('/categories')\n    .set('Authorization', `Bearer ${accessToken}`)\n    .send(data);\n  categoryId = response.body.data.categoryId;\n  expect(response.status).to.equal(201); \n  expect(response.body.status).to.equal('success'); \n  expect(response.body.data).to.be.an('object');\n  expect(response.body.message).to.equal('Category berhasil ditambahkan');\n  expect(response.body.data).to.have.property('categoryId'); \n  expect(response.body.data.name).to.equal(data.name);\n} catch (error) {\n  throw error;\n}",
+                  "err": {},
+                  "uuid": "6f1b1d32-838a-4c2f-8677-b71c66e6a657",
+                  "parentUUID": "69ec972b-4b74-48bd-812c-2d28d939a0a4",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Failed add a category without authentication - 401 Unauthorized (Negative Scenario)",
+                  "fullTitle": "Categories Tests Create a category with method POST   Failed add a category without authentication - 401 Unauthorized (Negative Scenario)",
+                  "timedOut": false,
+                  "duration": 833,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "try {\n  const data = {\n    name: 'Oleh - oleh',\n    description: 'Oleh - oleh khas Bukittinggi',\n  };\n  const response = await request(baseUrl)\n    .post('/categories')\n    .send(data);\n  expect(response.status).to.equal(401);\n  expect(response.body.statusCode).to.equal(401);\n  expect(response.body.error).to.equal('Unauthorized')\n  expect(response.body.message).to.equal('Missing authentication');\n} catch (error) {\n  throw error;\n}",
+                  "err": {},
+                  "uuid": "339cbec4-e7b8-4cd5-8789-9a61adc4ad77",
+                  "parentUUID": "69ec972b-4b74-48bd-812c-2d28d939a0a4",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Failed add a category with missing name - 400 Bad Request (Negative Scenario) ",
+                  "fullTitle": "Categories Tests Create a category with method POST   Failed add a category with missing name - 400 Bad Request (Negative Scenario) ",
+                  "timedOut": false,
+                  "duration": 850,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "try {\n  const data = {\n    name: '',\n    description: 'Without name',\n  };           \n  const response = await request(baseUrl)\n    .post('/categories')\n    .set('Authorization', `Bearer ${accessToken}`)\n    .send(data);\n  expect(response.status).to.equal(400);\n  expect(response.body.message).to.equal('\\\"name\\\" is not allowed to be empty'); \n} catch (error) {\n  throw error;\n}",
+                  "err": {},
+                  "uuid": "459fdf7c-cee7-44aa-96fe-e5d16ba3155f",
+                  "parentUUID": "69ec972b-4b74-48bd-812c-2d28d939a0a4",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "6f1b1d32-838a-4c2f-8677-b71c66e6a657",
+                "339cbec4-e7b8-4cd5-8789-9a61adc4ad77",
+                "459fdf7c-cee7-44aa-96fe-e5d16ba3155f"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 2394,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "30249338-eb33-4a71-aac7-a7be3fbb03d2",
+              "title": "Read categories with method GET ",
+              "fullFile": "E:\\Learning QA\\SanbercodeQABatch45\\Week4\\test\\spec\\categories\\FeatureCategories.spec.js",
+              "file": "\\test\\spec\\categories\\FeatureCategories.spec.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Success get category data by Id (Positive Scenario)",
+                  "fullTitle": "Categories Tests Read categories with method GET  Success get category data by Id (Positive Scenario)",
+                  "timedOut": false,
+                  "duration": 677,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "try {\n  const response = await request(baseUrl)\n    .get(`/categories/${categoryId}`)\n    .set('Authorization', `Bearer ${accessToken}`);\n    \n  expect(response.status).to.equal(200); \n  expect(response.body.status).to.equal('success'); \n  expect(response.body.data).to.be.an('object');\n  expect(response.body.data.category).to.have.property('name', 'Oleh - oleh'); \n  expect(response.body.data.category).to.have.property('description', 'Oleh - oleh khas Bukittinggi'); \n} catch (error) {\n  throw error;\n}",
+                  "err": {},
+                  "uuid": "b7605263-c527-4d73-a68c-c28502cc50f1",
+                  "parentUUID": "30249338-eb33-4a71-aac7-a7be3fbb03d2",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Failed get category data with invalid id (Negative Scenario)",
+                  "fullTitle": "Categories Tests Read categories with method GET  Failed get category data with invalid id (Negative Scenario)",
+                  "timedOut": false,
+                  "duration": 636,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "try {\n  const invalidId = 'invalid-id-categories'\n  const response = await request(baseUrl)\n    .get(`/categories/${invalidId}`)\n    .set('Authorization', `Bearer ${accessToken}`);\n    \n  expect(response.status).to.equal(404); \n  expect(response.body.status).to.equal('fail'); \n  expect(response.body.message).to.equal('id tidak valid');\n} catch (error) {\n  throw error;\n}",
+                  "err": {},
+                  "uuid": "2936c06d-57f5-4e83-8e8f-0155bc41daab",
+                  "parentUUID": "30249338-eb33-4a71-aac7-a7be3fbb03d2",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "b7605263-c527-4d73-a68c-c28502cc50f1",
+                "2936c06d-57f5-4e83-8e8f-0155bc41daab"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1313,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "7fe33f00-a24f-4f19-a73a-ffc6dffb3a39",
+              "title": "Update a category with method PUT  ",
+              "fullFile": "E:\\Learning QA\\SanbercodeQABatch45\\Week4\\test\\spec\\categories\\FeatureCategories.spec.js",
+              "file": "\\test\\spec\\categories\\FeatureCategories.spec.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Success update category  (Positive Scenario)",
+                  "fullTitle": "Categories Tests Update a category with method PUT   Success update category  (Positive Scenario)",
+                  "timedOut": false,
+                  "duration": 632,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "try {\n  const data = {\n    name: 'Makanan',\n    description: 'Makanan khas Bukittinggi',\n  };\n  const response = await request(baseUrl)\n    .put(`/categories/${categoryId}`)\n    .set('Authorization', `Bearer ${accessToken}`)\n    .send(data);\n  expect(response.status).to.equal(200); \n  expect(response.body.status).to.equal('success'); \n  expect(response.body.data).to.be.an('object');\n  expect(response.body.data).to.have.property('name', 'Makanan'); \n} catch (error) {\n  throw error;\n}",
+                  "err": {},
+                  "uuid": "7ec18a63-d7ce-4ab4-b57b-bee86428d5f1",
+                  "parentUUID": "7fe33f00-a24f-4f19-a73a-ffc6dffb3a39",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Failed update category with invalid id - 404  (Negative Scenario)",
+                  "fullTitle": "Categories Tests Update a category with method PUT   Failed update category with invalid id - 404  (Negative Scenario)",
+                  "timedOut": false,
+                  "duration": 662,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "try {\n  const invalidId = 'invalid-id-categories'\n  const data = {\n    name: 'Minuman',\n    description: 'Minuman khas Bukittinggi',\n  };\n  const response = await request(baseUrl)\n    .put(`/categories/${invalidId}`)\n    .set('Authorization', `Bearer ${accessToken}`)\n    .send(data);\n  expect(response.status).to.equal(404);\n  expect(response.body.message).to.equal('id tidak valid');\n} catch (error) {\n  throw error;\n}",
+                  "err": {},
+                  "uuid": "2301d934-2a06-4b85-86cd-b591a543e3b0",
+                  "parentUUID": "7fe33f00-a24f-4f19-a73a-ffc6dffb3a39",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Failed update category with invalid type data - 404  (Negative Scenario)",
+                  "fullTitle": "Categories Tests Update a category with method PUT   Failed update category with invalid type data - 404  (Negative Scenario)",
+                  "timedOut": false,
+                  "duration": 641,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "try {\n  const data = {\n    name: 987,\n    description: 'Minuman khas Bukittinggi',\n  };\n  const response = await request(baseUrl)\n    .put(`/categories/${categoryId}`)\n    .set('Authorization', `Bearer ${accessToken}`)\n    .send(data);\n  expect(response.status).to.equal(400);\n  expect(response.body.status).to.equal('fail');\n  expect(response.body.message).to.equal('\\\"name\\\" must be a string');\n} catch (error) {\n  throw error;\n}",
+                  "err": {},
+                  "uuid": "e6162730-2225-4924-af75-3899e39df52a",
+                  "parentUUID": "7fe33f00-a24f-4f19-a73a-ffc6dffb3a39",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "7ec18a63-d7ce-4ab4-b57b-bee86428d5f1",
+                "2301d934-2a06-4b85-86cd-b591a543e3b0",
+                "e6162730-2225-4924-af75-3899e39df52a"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1935,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "d7ba9083-004e-49f2-b575-ee83e2355304",
+              "title": "Delete a category with method DELETE  ",
+              "fullFile": "E:\\Learning QA\\SanbercodeQABatch45\\Week4\\test\\spec\\categories\\FeatureCategories.spec.js",
+              "file": "\\test\\spec\\categories\\FeatureCategories.spec.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Success delete category  (Positive Scenario)",
+                  "fullTitle": "Categories Tests Delete a category with method DELETE   Success delete category  (Positive Scenario)",
+                  "timedOut": false,
+                  "duration": 671,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "try {\n  const response = await request(baseUrl)\n    .delete(`/categories/${categoryId}`)\n    .set('Authorization', `Bearer ${accessToken}`);\n  expect(response.status).to.equal(200); \n  expect(response.body.status).to.equal('success'); \n  expect(response.body.data).to.be.empty;\n} catch (error) {\n  throw error;\n}",
+                  "err": {},
+                  "uuid": "a878b553-02cb-4aeb-a849-d6858f6481dc",
+                  "parentUUID": "d7ba9083-004e-49f2-b575-ee83e2355304",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Failed delete category with invalid id - 404  (Negative Scenario)",
+                  "fullTitle": "Categories Tests Delete a category with method DELETE   Failed delete category with invalid id - 404  (Negative Scenario)",
+                  "timedOut": false,
+                  "duration": 652,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "try {\n  const invalidId = 'invalid-id-categories'\n  const response = await request(baseUrl)\n    .delete(`/categories/${invalidId}`)\n    .set('Authorization', `Bearer ${accessToken}`);\n  expect(response.status).to.equal(404);\n  expect(response.body.status).to.equal('fail');\n  expect(response.body.message).to.equal('id tidak valid');\n} catch (error) {\n  throw error;\n}",
+                  "err": {},
+                  "uuid": "25b8241a-985f-4522-9308-c72a6441895e",
+                  "parentUUID": "d7ba9083-004e-49f2-b575-ee83e2355304",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "a878b553-02cb-4aeb-a849-d6858f6481dc",
+                "25b8241a-985f-4522-9308-c72a6441895e"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1323,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

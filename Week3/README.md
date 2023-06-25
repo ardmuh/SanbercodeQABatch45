@@ -11,7 +11,6 @@ Untuk menjalankan program ini perlu untuk:
 ```
 npm init
 npm install
-npm install prompt-sync
 ```
 - Jalankan program
 ```
