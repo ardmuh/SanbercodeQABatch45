@@ -20,7 +20,7 @@ npx mocha --reporter mochawesome --recursive test/spec/categories
 
 Berikut output dari API 
 ![output][output]
-![output2][output]
+![output2][output2]
 
 
 
