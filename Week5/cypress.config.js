@@ -13,8 +13,8 @@ module.exports = defineConfig({
     baseUrl : 'https://kasirdemo.belajarqa.com',
     specPattern : 'cypress/e2e',
     chromeWebSecurity : false,
-    viewportWidth: 1280,
-    viewportHeight: 780,
+    viewportWidth: 1350,
+    viewportHeight: 790,
     setupNodeEvents(on, config) {
       // implement node event listeners here
       require('cypress-mochawesome-reporter/plugin')(on);
